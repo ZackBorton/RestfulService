@@ -18,6 +18,10 @@ namespace RestfulServices
     [Route("api/[controller]")] // this allows for the controller name to be inferred dynamically as long as the UseMVC is specified in the startup class
     // Controller names should be a verb
     // Use nouns to represent resources
+    // Use lowercase letters in URIs
+    // Use hyphens not underscores
+    // Do not use trailing slashes, slashes should represent a hierarchy 
+    // Do not add file extensions to routes
     public class ExampleController : Controller // Extending controller allows for us to inherit a bunch of useful api methods
     {
         /// <summary>
@@ -35,12 +39,12 @@ namespace RestfulServices
         // IActionResult allows a wider range of return types then ActionResult, including any custom code that implements the IActionResult interface
         public async Task<IActionResult> ExampleGet() // Asynchronous method call
         {
-            // return Ok(); Returns a 200
+            // return Ok(Something); Returns a 200 should include a response body
             // return NoContent(); Returns a 204
             // return RedirectPermanent("https://SomeSampleURI.com/things"); Sample 301 
             // return RedirectPreserveMethod(""); Sample 307
             // return RedirectToPagePermanentPreserveMethod() Sample 308
-            // return NotFound() User does not have permission for action
+            // return NotFound() User does not have permission for action Sample 403
             return Unauthorized(); // Returns a 401
         }
         
@@ -51,11 +55,10 @@ namespace RestfulServices
         /// <returns></returns>
         [HttpPost]
         [Route("")]
-        [ProducesResponseType(200)]
         [ProducesResponseType(201)] // 201 stands for created, return the location (id) of the new resource
         public IActionResult ExamplePost<T>([FromBody] T ExampleBody)
         {
-            return Ok();
+            return Created("","");
         }
         
         /// <summary>
