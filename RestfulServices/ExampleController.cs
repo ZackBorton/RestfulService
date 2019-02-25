@@ -45,8 +45,14 @@ namespace RestfulServices
         [ProducesResponseType(401)] // Unauthorized  
         [ProducesResponseType(403)] // Forbidden
         // IActionResult allows a wider range of return types then ActionResult, including any custom code that implements the IActionResult interface
-        public async Task<IActionResult> ExampleGet() // Asynchronous method call
+        public async Task<IActionResult> ExampleGet([FromQuery] yourParameterName) // Asynchronous method call
         {
+            // Example attribute parameters in your method signature
+            // [FromRoute] Can be used in Get's and Deletes
+            // [FromQuery] Can be used fro Get's
+            // [FromBody] Can be used for Post and Put
+            // [FromForm] Can be used for Post and Put
+            
             // return Ok(Something); Returns a 200 should include a response body
             // return NoContent(); Returns a 204
             // return RedirectPermanent("https://SomeSampleURI.com/things"); Sample 301 
