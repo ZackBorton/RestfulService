@@ -7,8 +7,10 @@ namespace RestfulServices
     ///     (Rest) Representational State Transfer
     ///     Resources expose easily understood directory structure URIs.
     ///     Returns representations that transfer JSON or XML to represent data objects and attributes.
-    ///     Messages use HTTP methods explicitly (GET, POST, PUT, and DELETE).
+    ///     Messages use HTTP methods explicitly (GET, POST, PUT, and DELETE, etc).
     ///     Stateless interactions store no client context on the server between requests. State dependencies limit and restrict scalability. The client holds session state.
+    ///     Rest also supports HTTP headers, Query parameters and Status Codes
+    ///     Status codes include 
     ///     1XX - informational
     ///     2XX - success
     ///     3XX - redirection
@@ -22,6 +24,12 @@ namespace RestfulServices
     // Use hyphens not underscores
     // Do not use trailing slashes, slashes should represent a hierarchy 
     // Do not add file extensions to routes
+    // No spaces or characters other than dashes
+    // Headers
+    //    General Header - These header fields have general applicability for both request and response messages.
+    //    Client Request Header - These header fields have applicability only for request messages.
+    //    Server Response Header - These header fields have applicability only for response messages.
+    //    Entity Header - These header fields define meta information about the entity-body or, if no BODY is present, about the resource identified by the request.
     public class ExampleController : Controller // Extending controller allows for us to inherit a bunch of useful api methods
     {
         /// <summary>
